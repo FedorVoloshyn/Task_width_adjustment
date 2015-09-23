@@ -24,11 +24,14 @@ namespace Task_width_adjustment
                     
                     int width = Convert.ToInt32(lines[0]);
                     string text = lines[1];
-                    char[] separators = {',', ' '};
+                    char[] separators = {' '};
                     string[] words = text.Split(separators);
 
+                    // Show words
                     foreach (string x in words)
                         Console.WriteLine(x);
+
+                    
                 }
                 else
                     Console.WriteLine("Incorrect number of lines in 'in.txt'!");
