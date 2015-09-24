@@ -34,7 +34,7 @@ namespace Task_width_adjustment
                     // Produce final strings
                     List<string> finalStrings = new List<string>();
                     bool isEnd = false;
-                    int countOfLettersInString = 0, i = 0, j, lastWordIndex = 0, avaluableSpaces = 0, startWord = 0;
+                    int countOfLettersInString = 0, i = 0, j, avaluableSpaces = 0, startWord = 0, countOfWordsInLine = 0;
                    
                     while(!isEnd)
                     {
@@ -48,35 +48,46 @@ namespace Task_width_adjustment
                                 if (countOfLettersInString == width)
                                     countOfLettersInString--;
                             }
-                            else
-                                lastWordIndex = i;
                             i++;
+                            countOfWordsInLine++;
                             if (i == words.Length)
                                 break;
                         } 
+                        // Calculate spaces to enter after words
+                        if (countOfLettersInString == width)
+                            avaluableSpaces = width - countOfLettersInString + countOfWordsInLine - 1;
+                        else
+                            avaluableSpaces = width - countOfLettersInString + countOfWordsInLine;
 
-                        //for (j = startWord; j < i; j++ )
-                        //{
-                        //    if(j != i)
-                        //        avaluableSpaces += words[j].Length + 1;
-                        //    else
-                        //        avaluableSpaces += words[j].Length;
-                        //}
-                        //avaluableSpaces -= countOfLettersInString;
-                        avaluableSpaces = width - countOfLettersInString + 1;
-
+                        // Adding spaces to words
                         while (avaluableSpaces != 0)
                         {
-                            for (j = startWord; j < i; j++)
+                            if (countOfWordsInLine == 1)
                             {
-                                if (avaluableSpaces > 0)
+                                j = startWord;
+                                while (avaluableSpaces != 0)
                                 {
-                                    words[j] += ' ';
-                                    avaluableSpaces--;
+                                    if (avaluableSpaces > 0)
+                                    {
+                                        words[j] += ' ';
+                                        avaluableSpaces--;
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                for (j = startWord; j < i - 1; j++)
+                                {
+                                    if (avaluableSpaces > 0)
+                                    {
+                                        words[j] += ' ';
+                                        avaluableSpaces--;
+                                    }
                                 }
                             }
                         }
 
+                        // Compiling strings
                         string tmp = "";
                         for (j = startWord; j < i; j++)
                         {
@@ -84,9 +95,14 @@ namespace Task_width_adjustment
                         }
 
                         finalStrings.Add(tmp);
+
+                        // Reset variables
                         startWord = i;
                         countOfLettersInString = 0;
                         avaluableSpaces = 0;
+                        countOfWordsInLine = 0;
+
+                        // Check is finish
                         if (i == words.Length)
                             isEnd = true;
                     }
