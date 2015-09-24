@@ -16,8 +16,9 @@ namespace Task_width_adjustment
             bool isFinish = false;
             while(!isFinish)
             {
-                do
+                do // ИДЕЯ: к каждому слову, как к строке, добавлять пробелы.
                 {
+
                     tmp += tmpMas[i] + " ";
                     countOfSymbolsInWord += tmpMas[i].Length;
                     i++;
