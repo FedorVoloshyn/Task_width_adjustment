@@ -18,13 +18,13 @@ namespace Task_width_adjustment
                 {
                     // Show text from file 'in.txt'
                     Console.WriteLine("File 'in.txt' contains: ");
-                    foreach(string x in lines)
+                    foreach (string x in lines)
                         Console.WriteLine(x);
                     Console.WriteLine("\n");
-                    
+
                     int width = Convert.ToInt32(lines[0]);
                     string text = lines[1];
-                    char[] separators = {' '};
+                    char[] separators = { ' ' };
                     string[] words = text.Split(separators);
 
                     // Show words
@@ -35,29 +35,19 @@ namespace Task_width_adjustment
                     List<string> finalStrings = new List<string>();
                     bool isEnd = false;
                     int countOfLettersInString = 0, i = 0, j, avaluableSpaces = 0, startWord = 0, countOfWordsInLine = 0;
-                   
-                    while(!isEnd)
+
+                    while (!isEnd)
                     {
                         while (countOfLettersInString <= width && countOfLettersInString + words[i].Length <= width)
                         {
-                            foreach (char x in words[i])
-                                countOfLettersInString++;
-                            if (countOfLettersInString < width)
-                            {
-                                countOfLettersInString++;
-                                if (countOfLettersInString == width)
-                                    countOfLettersInString--;
-                            }
+                            countOfLettersInString += words[i].Length + 1;
                             i++;
                             countOfWordsInLine++;
                             if (i == words.Length)
                                 break;
-                        } 
+                        }
                         // Calculate spaces to enter after words
-                        if (countOfLettersInString == width)
-                            avaluableSpaces = width - countOfLettersInString + countOfWordsInLine - 1;
-                        else
-                            avaluableSpaces = width - countOfLettersInString + countOfWordsInLine;
+                        avaluableSpaces = width - countOfLettersInString + countOfWordsInLine;
 
                         // Adding spaces to words
                         while (avaluableSpaces != 0)
