@@ -22,13 +22,15 @@ namespace Task_width_adjustment
                         Console.WriteLine(x);
                     Console.WriteLine("\n");
 
-                    int width = Convert.ToInt32(lines[0]);
+                    int width = 0;
+                    if(lines[0].Length>0)
+                        width = Convert.ToInt32(lines[0]);
                     string text = lines[1];
                     char[] separators = { ' ' };
                     string[] words = text.Split(separators);
                     bool falseWidth = false;
 
-                    if (width < 100)
+                    if (width < 100 && width > 0)
                     {
                         // Show words
                         foreach (string x in words)
@@ -124,7 +126,7 @@ namespace Task_width_adjustment
                         }
                     }
                     else
-                        Console.WriteLine("Width is too hight! (width = [higher word length, 100])");
+                        Console.WriteLine("Width is incorrect! (width = [higher word length, 100])");
                 }
                 else
                     Console.WriteLine("Incorrect number of lines in 'in.txt'!");
