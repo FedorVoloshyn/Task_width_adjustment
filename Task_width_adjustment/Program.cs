@@ -11,9 +11,9 @@ namespace Task_width_adjustment
     {
         static void Main(string[] args)
         {
-            if (File.Exists(@"C:\Users\ФЁДОР\Documents\Visual Studio 2013\Projects\Task_width_adjustment\Task_width_adjustment\in.txt"))
+            if (File.Exists(@"..\..\in.txt"))
             {
-                string[] lines = File.ReadAllLines(@"C:\Users\ФЁДОР\Documents\Visual Studio 2013\Projects\Task_width_adjustment\Task_width_adjustment\in.txt", Encoding.Default);
+                string[] lines = File.ReadAllLines(@"..\..\in.txt", Encoding.Default);
                 if (lines.Length == 2)
                 {
                     // Show text from file 'in.txt'
@@ -101,7 +101,7 @@ namespace Task_width_adjustment
                         Console.WriteLine("\n");
                         foreach (string x in finalStrings)
                             Console.WriteLine(x);
-                        File.WriteAllLines(@"C:\Users\ФЁДОР\Documents\Visual Studio 2013\Projects\Task_width_adjustment\Task_width_adjustment\out.txt", finalStrings);
+                        File.WriteAllLines(@"..\..\out.txt", finalStrings);
                     }
                     else
                         Console.WriteLine("Incorrect width.");
