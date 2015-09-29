@@ -26,85 +26,105 @@ namespace Task_width_adjustment
                     string text = lines[1];
                     char[] separators = { ' ' };
                     string[] words = text.Split(separators);
+                    bool falseWidth = false;
 
-                    // Show words
-                    foreach (string x in words)
-                        Console.WriteLine(x);
-
-                    // Produce final strings
-                    List<string> finalStrings = new List<string>();
-                    bool isEnd = false;
-                    int countOfLettersInString = 0, i = 0, j, avaluableSpaces = 0, startWord = 0, countOfWordsInLine = 0;
-                    if (width >= 3)
+                    if (width < 100)
                     {
-                        while (!isEnd)
+                        // Show words
+                        foreach (string x in words)
                         {
-                            while (countOfLettersInString <= width && countOfLettersInString + words[i].Length <= width)
+                            if (x.Length < width)
+                                Console.WriteLine(x);
+                            else
                             {
-                                countOfLettersInString += words[i].Length + 1;
-                                i++;
-                                countOfWordsInLine++;
-                                if (i == words.Length)
-                                    break;
+                                Console.WriteLine("Error: word`s length > width:\nword: {0} has length {1}, while width = {2}", x, x.Length, width);
+                                falseWidth = true;
+                                break;
                             }
-                            // Calculate spaces to enter after words
-                            avaluableSpaces = width - countOfLettersInString + countOfWordsInLine;
-
-                            // Adding spaces to words
-                            while (avaluableSpaces != 0)
-                            {
-                                if (countOfWordsInLine == 1)
-                                {
-                                    j = startWord;
-                                    while (avaluableSpaces != 0)
-                                    {
-                                        if (avaluableSpaces > 0)
-                                        {
-                                            words[j] += ' ';
-                                            avaluableSpaces--;
-                                        }
-                                    }
-                                }
-                                else
-                                {
-                                    for (j = startWord; j < i - 1; j++)
-                                    {
-                                        if (avaluableSpaces > 0)
-                                        {
-                                            words[j] += ' ';
-                                            avaluableSpaces--;
-                                        }
-                                    }
-                                }
-                            }
-
-                            // Compiling strings
-                            string tmp = "";
-                            for (j = startWord; j < i; j++)
-                            {
-                                tmp += words[j];
-                            }
-
-                            finalStrings.Add(tmp);
-
-                            // Reset variables
-                            startWord = i;
-                            countOfLettersInString = 0;
-                            avaluableSpaces = 0;
-                            countOfWordsInLine = 0;
-
-                            // Check is finish
-                            if (i == words.Length)
-                                isEnd = true;
                         }
 
-                        Console.WriteLine("\n");
-                        foreach (string x in finalStrings)
-                            Console.WriteLine(x);
-                        File.WriteAllLines(@"..\..\out.txt", finalStrings);
+
+                        // Produce final strings
+                        if (!falseWidth)
+                        {
+                            List<string> finalStrings = new List<string>();
+                            bool isEnd = false;
+                            int countOfLettersInString = 0, i = 0, j, avaluableSpaces = 0, startWord = 0, countOfWordsInLine = 0;
+                            if (width >= 3)
+                            {
+                                while (!isEnd)
+                                {
+                                    while (countOfLettersInString <= width && countOfLettersInString + words[i].Length <= width)
+                                    {
+                                        countOfLettersInString += words[i].Length + 1;
+                                        i++;
+                                        countOfWordsInLine++;
+                                        if (i == words.Length)
+                                            break;
+                                    }
+                                    // Calculate spaces to enter after words
+                                    avaluableSpaces = width - countOfLettersInString + countOfWordsInLine;
+
+                                    // Adding spaces to words
+                                    while (avaluableSpaces != 0)
+                                    {
+                                        if (countOfWordsInLine == 1)
+                                        {
+                                            j = startWord;
+                                            while (avaluableSpaces != 0)
+                                            {
+                                                if (avaluableSpaces > 0)
+                                                {
+                                                    words[j] += ' ';
+                                                    avaluableSpaces--;
+                                                }
+                                            }
+                                        }
+                                        else
+                                        {
+                                            for (j = startWord; j < i - 1; j++)
+                                            {
+                                                if (avaluableSpaces > 0)
+                                                {
+                                                    words[j] += ' ';
+                                                    avaluableSpaces--;
+                                                }
+                                            }
+                                        }
+                                    }
+
+                                    // Compiling strings
+                                    string tmp = "";
+                                    for (j = startWord; j < i; j++)
+                                    {
+                                        tmp += words[j];
+                                    }
+
+                                    finalStrings.Add(tmp);
+
+                                    // Reset variables
+                                    startWord = i;
+                                    countOfLettersInString = 0;
+                                    avaluableSpaces = 0;
+                                    countOfWordsInLine = 0;
+
+                                    // Check is finish
+                                    if (i == words.Length)
+                                        isEnd = true;
+                                }
+
+                                Console.WriteLine("\n");
+                                foreach (string x in finalStrings)
+                                    Console.WriteLine(x);
+                                File.WriteAllLines(@"..\..\out.txt", finalStrings);
+
+                            }
+                            else
+                                Console.WriteLine("Incorrect width.");
+                        }
                     }
                     else
-                        Console.WriteLine("Incorrect width.");
+                        Console.WriteLine("Width is too hight! (width = [higher word length, 100])");
                 }
                 else
                     Console.WriteLine("Incorrect number of lines in 'in.txt'!");
