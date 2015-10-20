@@ -4,3 +4,12 @@ C:\Users\ФЁДОР\Documents\Visual Studio 2013\Projects\Task_width_adjustment\
 C:\Users\ФЁДОР\Documents\Visual Studio 2013\Projects\Task_width_adjustment\Task_width_adjustment\obj\Debug\Task_width_adjustment.csprojResolveAssemblyReference.cache
 C:\Users\ФЁДОР\Documents\Visual Studio 2013\Projects\Task_width_adjustment\Task_width_adjustment\obj\Debug\Task_width_adjustment.exe
 C:\Users\ФЁДОР\Documents\Visual Studio 2013\Projects\Task_width_adjustment\Task_width_adjustment\obj\Debug\Task_width_adjustment.pdb
+C:\Users\ФЁДОР\Documents\Visual Studio 2013\Projects\Task_width_adjustment\Task_width_adjustment\bin\Debug\Microsoft.Practices.ServiceLocation.dll
+C:\Users\ФЁДОР\Documents\Visual Studio 2013\Projects\Task_width_adjustment\Task_width_adjustment\bin\Debug\Microsoft.Practices.Unity.Configuration.dll
+C:\Users\ФЁДОР\Documents\Visual Studio 2013\Projects\Task_width_adjustment\Task_width_adjustment\bin\Debug\Microsoft.Practices.Unity.dll
+C:\Users\ФЁДОР\Documents\Visual Studio 2013\Projects\Task_width_adjustment\Task_width_adjustment\bin\Debug\Microsoft.Practices.Unity.RegistrationByConvention.dll
+C:\Users\ФЁДОР\Documents\Visual Studio 2013\Projects\Task_width_adjustment\Task_width_adjustment\bin\Debug\Microsoft.Practices.ServiceLocation.pdb
+C:\Users\ФЁДОР\Documents\Visual Studio 2013\Projects\Task_width_adjustment\Task_width_adjustment\bin\Debug\Microsoft.Practices.ServiceLocation.xml
+C:\Users\ФЁДОР\Documents\Visual Studio 2013\Projects\Task_width_adjustment\Task_width_adjustment\bin\Debug\Microsoft.Practices.Unity.xml
+C:\Users\ФЁДОР\Documents\Visual Studio 2013\Projects\Task_width_adjustment\Task_width_adjustment\bin\Debug\Microsoft.Practices.Unity.Configuration.xml
+C:\Users\ФЁДОР\Documents\Visual Studio 2013\Projects\Task_width_adjustment\Task_width_adjustment\bin\Debug\Microsoft.Practices.Unity.RegistrationByConvention.xml
